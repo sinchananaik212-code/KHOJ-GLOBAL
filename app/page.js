@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -7,216 +6,122 @@ const brands = [
   {
     id: 1,
     name: "Aara Studio",
+    category: "Fashion",
     state: "Rajasthan",
     city: "Jaipur",
-    category: "Fashion",
-    price: 2499,
-    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900",
     tagline: "Tradition, reimagined for today.",
-    story: "Aara Studio celebrates Indian textiles through contemporary clothing. Inspired by the colours, crafts and traditions of Rajasthan, the studio brings heritage into everyday fashion.",
-    founder: "A sample founder story about the inspiration behind Aara Studio.",
-    email: "hello@aarastudio.example",
-    products: [
-      {
-        name: "Signature Collection",
-        description: "Contemporary clothing inspired by Indian textiles.",
-        image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=700",
-      },
-      {
-        name: "Everyday Collection",
-        description: "Comfortable styles with traditional details.",
-        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "United Kingdom", "UAE", "Singapore"],
-    languages: ["English", "Hindi"],
-    exportInfo: "Contact the brand owner for international shipping and export enquiries.",
+    image:
+      "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900",
+    products: ["Handcrafted apparel", "Contemporary ethnic wear"],
+    moq: 100,
+    capacity: 1800,
+    leadTime: 21,
+    readiness: "Developing",
+    customisation: true,
+    samples: true,
   },
   {
     id: 2,
     name: "Nira Botanics",
+    category: "Beauty",
     state: "Karnataka",
     city: "Bengaluru",
-    category: "Beauty",
-    price: 899,
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=900",
     tagline: "Rooted in nature. Made with care.",
-    story: "Nira Botanics is a sample natural skincare brand inspired by botanical ingredients and traditional Indian self-care practices.",
-    founder: "A sample founder story about natural ingredients and thoughtful skincare.",
-    email: "hello@nirabotanics.example",
-    products: [
-      {
-        name: "Botanical Face Cream",
-        description: "A sample skincare product inspired by nature.",
-        image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700",
-      },
-      {
-        name: "Natural Care Set",
-        description: "A sample collection for everyday skincare.",
-        image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "UAE", "Singapore"],
-    languages: ["English", "Kannada", "Hindi"],
-    exportInfo: "Contact the brand owner to confirm international orders and export availability.",
+    image:
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=900",
+    products: ["Botanical skincare", "Natural personal care"],
+    moq: 250,
+    capacity: 3000,
+    leadTime: 18,
+    readiness: "In progress",
+    customisation: true,
+    samples: true,
   },
   {
     id: 3,
     name: "Mitti Form",
+    category: "Home & Living",
     state: "Tamil Nadu",
     city: "Chennai",
-    category: "Home & Living",
-    price: 1599,
-    image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=900",
     tagline: "Handmade objects with a story.",
-    story: "Mitti Form celebrates handmade pottery. Inspired by traditional Indian craftsmanship, each creation brings warmth and character into everyday spaces.",
-    founder: "A sample founder story about handmade pottery and traditional craft.",
-    email: "hello@mittiform.example",
-    products: [
-      {
-        name: "Earth Collection",
-        description: "Handmade pottery inspired by natural forms.",
-        image: "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=700",
-      },
-      {
-        name: "Home Decor",
-        description: "Decorative pieces for thoughtful living spaces.",
-        image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=700",
-      },
-    ],
-    shippingCountries: ["United Kingdom", "USA", "UAE"],
-    languages: ["English", "Tamil"],
-    exportInfo: "Contact the brand owner for product availability and export details.",
+    image:
+      "https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=900",
+    products: ["Ceramic decor", "Handmade homeware"],
+    moq: 50,
+    capacity: 900,
+    leadTime: 14,
+    readiness: "Developing",
+    customisation: true,
+    samples: true,
+  },
+  {
+    id: 4,
+    name: "Tantu Collective",
+    category: "Craft",
+    state: "Gujarat",
+    city: "Kutch",
+    tagline: "Woven by heritage.",
+    image:
+      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=900",
+    products: ["Handwoven textiles", "Traditional fabrics"],
+    moq: 500,
+    capacity: 2500,
+    leadTime: 30,
+    readiness: "In progress",
+    customisation: true,
+    samples: false,
   },
   {
     id: 5,
-    name: "Tantu Collective",
-    state: "Gujarat",
-    city: "Kutch",
-    category: "Craft",
-    price: 3200,
-    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=900",
-    tagline: "Woven by heritage.",
-    story: "Tantu Collective is a sample textile brand inspired by traditional weaving and embroidery in Kutch. It brings regional craft and contemporary design together.",
-    founder: "A sample founder story about preserving traditional textile crafts.",
-    email: "hello@tantucollective.example",
-    products: [
-      {
-        name: "Kutch Textiles",
-        description: "Textiles inspired by traditional regional patterns.",
-        image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=700",
-      },
-      {
-        name: "Handcrafted Collection",
-        description: "A sample collection celebrating Indian craft.",
-        image: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "United Kingdom", "France"],
-    languages: ["English", "Gujarati", "Hindi"],
-    exportInfo: "Contact the brand owner for international orders and export enquiries.",
+    name: "Aarvi Jewels",
+    category: "Jewellery",
+    state: "Rajasthan",
+    city: "Jaipur",
+    tagline: "Jewellery inspired by heritage.",
+    image:
+      "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900",
+    products: ["Handcrafted jewellery", "Traditional accessories"],
+    moq: 100,
+    capacity: 1200,
+    leadTime: 20,
+    readiness: "Developing",
+    customisation: false,
+    samples: true,
+  },
+  {
+    id: 6,
+    name: "Sole Stories",
+    category: "Footwear",
+    state: "Karnataka",
+    city: "Mysuru",
+    tagline: "Walk with your own story.",
+    image:
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=900",
+    products: ["Handcrafted footwear", "Contemporary sandals"],
+    moq: 200,
+    capacity: 1600,
+    leadTime: 25,
+    readiness: "In progress",
+    customisation: true,
+    samples: true,
   },
   {
     id: 7,
-    name: "Aarvi Jewels",
-    state: "Rajasthan",
-    city: "Jaipur",
-    category: "Jewellery",
-    price: 1899,
-    image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=900",
-    tagline: "Jewellery inspired by heritage.",
-    story: "Aarvi Jewels is a sample jewellery brand inspired by traditional Indian designs and contemporary craftsmanship.",
-    founder: "A sample founder story about traditional jewellery design.",
-    email: "hello@aarvijewels.example",
-    products: [
-      {
-        name: "Heritage Collection",
-        description: "Traditional jewellery inspired by Indian culture.",
-        image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=700",
-      },
-      {
-        name: "Modern Elegance",
-        description: "Contemporary jewellery for everyday styling.",
-        image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "UAE", "United Kingdom"],
-    languages: ["English", "Hindi"],
-    exportInfo: "Contact the brand owner for international orders and export details.",
-  },
-  {
-    id: 8,
-    name: "Sole Stories",
-    state: "Karnataka",
-    city: "Mysuru",
-    category: "Footwear",
-    price: 1499,
-    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=900",
-    tagline: "Walk with your own story.",
-    story: "Sole Stories is a sample footwear brand combining modern designs with traditional Indian craftsmanship.",
-    founder: "A sample founder story about comfortable and handcrafted footwear.",
-    email: "hello@solestories.example",
-    products: [
-      {
-        name: "Everyday Collection",
-        description: "Comfortable footwear for daily use.",
-        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700",
-      },
-      {
-        name: "Classic Collection",
-        description: "Timeless footwear inspired by Indian design.",
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "Singapore", "UAE"],
-    languages: ["English", "Kannada"],
-    exportInfo: "Contact the brand owner for international shipping information.",
-  },
-  {
-    id: 9,
     name: "The Loom Edit",
+    category: "Accessories",
     state: "Uttarakhand",
     city: "Dehradun",
-    category: "Accessories",
-    price: 999,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900",
     tagline: "Little details. Lasting impressions.",
-    story: "The Loom Edit is a sample accessories brand inspired by Indian textiles and handcrafted designs.",
-    founder: "A sample founder story about creating accessories inspired by Indian textiles.",
-    email: "hello@theloomedit.example",
-    products: [
-      {
-        name: "Handcrafted Bags",
-        description: "Bags inspired by traditional Indian textiles.",
-        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700",
-      },
-      {
-        name: "Everyday Accessories",
-        description: "Accessories designed for everyday use.",
-        image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=700",
-      },
-    ],
-    shippingCountries: ["USA", "United Kingdom", "France"],
-    languages: ["English", "Hindi"],
-    exportInfo: "Contact the brand owner for international orders and export details.",
+    image:
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900",
+    products: ["Handcrafted bags", "Textile accessories"],
+    moq: 150,
+    capacity: 2200,
+    leadTime: 16,
+    readiness: "Developing",
+    customisation: true,
+    samples: true,
   },
-];
-
-const currencies = {
-  INR: { symbol: "₹", rate: 1 },
-  USD: { symbol: "$", rate: 0.012 },
-  GBP: { symbol: "£", rate: 0.009 },
-  AED: { symbol: "د.إ", rate: 0.044 },
-  EUR: { symbol: "€", rate: 0.011 },
-};
-
-const states = [
-  "All States",
-  "Karnataka",
-  "Rajasthan",
-  "Tamil Nadu",
-  "Gujarat",
-  "Uttarakhand",
 ];
 
 const categories = [
@@ -230,28 +135,48 @@ const categories = [
   "Accessories",
 ];
 
+const states = [
+  "All States",
+  "Karnataka",
+  "Rajasthan",
+  "Tamil Nadu",
+  "Gujarat",
+  "Uttarakhand",
+];
+
+const readinessTasks = [
+  "Business registration details are available",
+  "Product specifications are documented",
+  "Product pricing and cost details are prepared",
+  "Minimum order quantity is defined",
+  "Production capacity is estimated",
+  "Packaging requirements are understood",
+  "Target export markets are identified",
+  "Relevant product regulations have been researched",
+  "Shipping and logistics options have been explored",
+  "Product samples are prepared for buyers",
+];
 export default function Home() {
   const [activePage, setActivePage] = useState("Home");
+  const [search, setSearch] = useState("");
   const [selectedState, setSelectedState] = useState("All States");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
-  const [currency, setCurrency] = useState("INR");
-  const [search, setSearch] = useState("");
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [saved, setSaved] = useState([]);
-
-  // Open a brand profile directly through its shareable link.
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const brandId = Number(params.get("brand"));
-
-    if (brandId) {
-      const brand = brands.find((item) => item.id === brandId);
-      if (brand) setSelectedBrand(brand);
-    }
-  }, []);
+  const [compareIds, setCompareIds] = useState([]);
+  const [showChecker, setShowChecker] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [maxMoq, setMaxMoq] = useState("Any");
+  const [readiness, setReadiness] = useState("Any");
+  const [customOnly, setCustomOnly] = useState(false);
 
   const filteredBrands = useMemo(() => {
     return brands.filter((brand) => {
+      const matchesSearch =
+        brand.name.toLowerCase().includes(search.toLowerCase()) ||
+        brand.tagline.toLowerCase().includes(search.toLowerCase()) ||
+        brand.products.join(" ").toLowerCase().includes(search.toLowerCase());
+
       const matchesState =
         selectedState === "All States" || brand.state === selectedState;
 
@@ -259,76 +184,121 @@ export default function Home() {
         selectedCategory === "All Categories" ||
         brand.category === selectedCategory;
 
-      const searchableText = [
-        brand.name,
-        brand.city,
-        brand.state,
-        brand.category,
-        ...brand.products.map((product) => product.name),
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      const matchesSearch = searchableText.includes(search.toLowerCase());
-
       const matchesSaved =
         activePage !== "Saved Brands" || saved.includes(brand.id);
 
+      return matchesSearch && matchesState && matchesCategory && matchesSaved;
+    });
+  }, [search, selectedState, selectedCategory, activePage, saved]);
+
+  const filteredSuppliers = useMemo(() => {
+    return brands.filter((brand) => {
+      const text =
+        `${brand.name} ${brand.city} ${brand.state} ${brand.category} ${brand.tagline} ${brand.products.join(" ")}`.toLowerCase();
+
+      const matchesSearch = text.includes(search.toLowerCase());
+      const matchesCategory =
+        selectedCategory === "All Categories" ||
+        brand.category === selectedCategory;
+      const matchesState =
+        selectedState === "All States" || brand.state === selectedState;
+      const matchesMoq =
+        maxMoq === "Any" || brand.moq <= Number(maxMoq);
+      const matchesReadiness =
+        readiness === "Any" || brand.readiness === readiness;
+      const matchesCustom = !customOnly || brand.customisation;
+
       return (
-        matchesState &&
-        matchesCategory &&
         matchesSearch &&
-        matchesSaved
+        matchesCategory &&
+        matchesState &&
+        matchesMoq &&
+        matchesReadiness &&
+        matchesCustom
       );
     });
-  }, [selectedState, selectedCategory, search, activePage, saved]);
+  }, [
+    search,
+    selectedCategory,
+    selectedState,
+    maxMoq,
+    readiness,
+    customOnly,
+  ]);
 
-  function formatPrice(price) {
-    const selectedCurrency = currencies[currency];
-    const converted = price * selectedCurrency.rate;
+  const navigate = (page) => {
+    setActivePage(page);
+    setSelectedBrand(null);
+    setSearch("");
+    setSelectedState("All States");
+    setSelectedCategory("All Categories");
+    setMaxMoq("Any");
+    setReadiness("Any");
+    setCustomOnly(false);
+    setCompareIds([]);
+    setShowChecker(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return `${selectedCurrency.symbol}${Math.round(
-      converted
-    ).toLocaleString()}`;
-  }
-
-  function toggleSaved(id) {
+  const toggleSaved = (id) => {
     setSaved((previous) =>
       previous.includes(id)
         ? previous.filter((item) => item !== id)
         : [...previous, id]
     );
-  }
+  };
 
-  function navigate(page) {
-    setActivePage(page);
-    setSelectedBrand(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  const toggleCompare = (id) => {
+    setCompareIds((previous) => {
+      if (previous.includes(id)) {
+        return previous.filter((item) => item !== id);
+      }
 
-  function shareBrand(brand) {
-    const shareUrl = `${window.location.origin}${window.location.pathname}?brand=${brand.id}`;
+      if (previous.length >= 3) {
+        alert("You can compare up to 3 suppliers at a time.");
+        return previous;
+      }
 
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard
-        .writeText(shareUrl)
-        .then(() => alert("Brand profile link copied!"))
-        .catch(() => window.prompt("Copy this brand profile link:", shareUrl));
-    } else {
-      window.prompt("Copy this brand profile link:", shareUrl);
+      return [...previous, id];
+    });
+  };
+
+  const resetSupplierFilters = () => {
+    setSearch("");
+    setSelectedCategory("All Categories");
+    setSelectedState("All States");
+    setMaxMoq("Any");
+    setReadiness("Any");
+    setCustomOnly(false);
+  };
+
+  const toggleTask = (index) => {
+    setCompletedTasks((previous) =>
+      previous.includes(index)
+        ? previous.filter((item) => item !== index)
+        : [...previous, index]
+    );
+  };
+
+  const readinessScore = Math.round(
+    (completedTasks.length / readinessTasks.length) * 100
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brandId = Number(params.get("brand"));
+
+    if (brandId) {
+      const brand = brands.find((item) => item.id === brandId);
+
+      if (brand) {
+        setSelectedBrand(brand);
+      }
     }
-  }
-
-  function filterByState(state) {
-    setSelectedState(state);
-    setActivePage("Discover");
-    setSelectedBrand(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  }, []);
 
   return (
     <main>
-      {/* Navigation */}
       <nav className="navbar">
         <button className="logo" onClick={() => navigate("Home")}>
           KHOJ<span>.</span>
@@ -336,487 +306,887 @@ export default function Home() {
         </button>
 
         <div className="nav-links">
-          {["Home", "Discover", "Brand Stories", "Saved Brands"].map(
-            (item) => (
-              <button
-                key={item}
-                className={activePage === item ? "nav-active" : ""}
-                onClick={() => navigate(item)}
-              >
-                {item}
-              </button>
-            )
-          )}
+          {[
+            "Home",
+            "Discover",
+            "Supplier Match",
+            "Brand Stories",
+            "Saved Brands",
+          ].map((page) => (
+            <button
+              key={page}
+              className={activePage === page ? "nav-active" : ""}
+              onClick={() => navigate(page)}
+            >
+              {page}
+            </button>
+          ))}
         </div>
       </nav>
 
-      {/* Home Page */}
       {activePage === "Home" && (
-        <>
-          <section className="hero">
-            <div className="hero-content">
-              <p className="eyebrow">INDIA, DISCOVERED DIFFERENTLY</p>
-
-              <h1>
-                Discover the
-                <br />
-                <em>extraordinary</em> in India.
-              </h1>
-
-              <p className="hero-description">
-                A gateway to India's independent brands, remarkable
-                craftsmanship and stories waiting to be discovered
-                around the world.
-              </p>
-
-              <button
-                className="primary-btn"
-                onClick={() => navigate("Discover")}
-              >
-                Explore Indian Brands <span>↗</span>
-              </button>
-
-              <div className="hero-note">
-                <span>✳</span> Made in India. Shared with the world.
-              </div>
-            </div>
-
-            <div className="hero-image">
-              <img
-                src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=1200"
-                alt="Indian craft and textiles"
-              />
-
-              <div className="image-caption">
-                <span>THE BEAUTY OF INDIA</span>
-                <strong>Rooted in culture. Made for the world.</strong>
-              </div>
-            </div>
-          </section>
-
-          <section className="intro-strip">
-            <p>ONE COUNTRY. MANY STORIES.</p>
-
-            <h2>
-              Local roots. <em>Global possibilities.</em>
-            </h2>
-
-            <p className="intro-text">
-              Meet the people, places and ideas behind India's independent brands.
-            </p>
-          </section>
-
-          {/* Explore by State */}
-          <section className="section">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">A WORLD OF DISCOVERY</p>
-                <h2>
-                  Explore by <em>region</em>
-                </h2>
-              </div>
-
-              <button
-                className="text-btn"
-                onClick={() => navigate("Discover")}
-              >
-                View all brands ↗
-              </button>
-            </div>
-
-            <div className="state-grid">
-              {[
-                {
-                  name: "Karnataka",
-                  image: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=700",
-                },
-                {
-                  name: "Rajasthan",
-                  image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?w=700",
-                },
-                {
-                  name: "Tamil Nadu",
-                  image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=700",
-                },
-                {
-                  name: "Gujarat",
-                  image: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=700",
-                },
-              ].map((state) => (
-                <button
-                  className="state-card"
-                  key={state.name}
-                  onClick={() => filterByState(state.name)}
-                >
-                  <img src={state.image} alt={state.name} />
-                  <span>{state.name}</span>
-                  <b>↗</b>
-                </button>
-              ))}
-            </div>
-          </section>
-
-          {/* Featured Brands */}
-          <section className="featured-section">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">HANDPICKED DISCOVERIES</p>
-                <h2>
-                  Meet the <em>makers</em>
-                </h2>
-              </div>
-
-              <button
-                className="text-btn"
-                onClick={() => navigate("Discover")}
-              >
-                Discover more ↗
-              </button>
-            </div>
-
-            <BrandGrid
-              brands={brands.slice(0, 3)}
-              formatPrice={formatPrice}
-              saved={saved}
-              toggleSaved={toggleSaved}
-              setSelectedBrand={setSelectedBrand}
-            />
-          </section>
-
-          {/* Brand Stories Banner */}
-          <section className="story-banner">
-            <div>
-              <p className="eyebrow">BEHIND EVERY BRAND</p>
-
-              <h2>
-                Every creation
-                <br />
-                has a <em>story.</em>
-              </h2>
-
-              <p>
-                Discover the founders, traditions and inspiration behind the products.
-              </p>
-
-              <button
-                className="light-btn"
-                onClick={() => navigate("Brand Stories")}
-              >
-                Read their stories ↗
-              </button>
-            </div>
-          </section>
-        </>
+        <HomePage navigate={navigate} brands={brands} />
       )}
 
-      {/* Discover, Saved Brands and Brand Stories */}
-      {(activePage === "Discover" ||
-        activePage === "Saved Brands" ||
-        activePage === "Brand Stories") && (
-        <section className="discover-page">
-          <div className="page-heading">
-            <p className="eyebrow">THE INDIA BRAND DIRECTORY</p>
-
-            <h1>
-              {activePage === "Saved Brands"
-                ? "Your saved discoveries."
-                : activePage === "Brand Stories"
-                ? "Stories worth sharing."
-                : "Find your next discovery."}
-            </h1>
-
-            <p>
-              Explore independent Indian brands, from local craftsmanship
-              to contemporary ideas.
-            </p>
-          </div>
-
-          {activePage !== "Brand Stories" && (
-            <div className="filter-bar">
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search brands, places or products..."
-              />
-
-              <select
-                value={selectedState}
-                onChange={(e) => setSelectedState(e.target.value)}
-              >
-                {states.map((state) => (
-                  <option key={state}>{state}</option>
-                ))}
-              </select>
-
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                {categories.map((category) => (
-                  <option key={category}>{category}</option>
-                ))}
-              </select>
-
-              <select
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}
-              >
-                {Object.keys(currencies).map((code) => (
-                  <option key={code} value={code}>
-                    {code}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {activePage === "Brand Stories" ? (
-            <div className="story-list">
-              {brands.map((brand) => (
-                <button
-                  className="story-row"
-                  key={brand.id}
-                  onClick={() => setSelectedBrand(brand)}
-                >
-                  <img src={brand.image} alt={brand.name} />
-
-                  <div>
-                    <p className="eyebrow">{brand.state}</p>
-                    <h2>{brand.name}</h2>
-                    <p>{brand.tagline}</p>
-                    <span>Read brand story ↗</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <>
-              <p className="result-count">
-                {filteredBrands.length} brands to discover
-              </p>
-
-              {filteredBrands.length > 0 ? (
-                <BrandGrid
-                  brands={filteredBrands}
-                  formatPrice={formatPrice}
-                  saved={saved}
-                  toggleSaved={toggleSaved}
-                  setSelectedBrand={setSelectedBrand}
-                />
-              ) : (
-                <div className="empty-state">
-                  <h2>
-                    {activePage === "Saved Brands"
-                      ? "No saved brands yet"
-                      : "No brands found"}
-                  </h2>
-
-                  <p>
-                    {activePage === "Saved Brands"
-                      ? "Save your favourite brands to see them here."
-                      : "Try another state, category or search."}
-                  </p>
-
-                  <button
-                    className="primary-btn"
-                    onClick={() => {
-                      setSearch("");
-                      setSelectedState("All States");
-                      setSelectedCategory("All Categories");
-                      if (activePage === "Saved Brands") {
-                        navigate("Discover");
-                      }
-                    }}
-                  >
-                    {activePage === "Saved Brands"
-                      ? "Discover brands"
-                      : "Clear filters"}
-                  </button>
-                </div>
-              )}
-            </>
-          )}
-        </section>
+      {activePage === "Discover" && (
+        <DiscoverPage
+          brands={filteredBrands}
+          search={search}
+          setSearch={setSearch}
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          saved={saved}
+          toggleSaved={toggleSaved}
+          setSelectedBrand={setSelectedBrand}
+        />
       )}
 
-      {/* Footer */}
+      {activePage === "Saved Brands" && (
+        <DiscoverPage
+          brands={filteredBrands}
+          search={search}
+          setSearch={setSearch}
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          saved={saved}
+          toggleSaved={toggleSaved}
+          setSelectedBrand={setSelectedBrand}
+          savedPage
+        />
+      )}
+
+      {activePage === "Brand Stories" && (
+        <BrandStoriesPage
+          brands={brands}
+          setSelectedBrand={setSelectedBrand}
+        />
+      )}
+
+      {activePage === "Supplier Match" && (
+        <SupplierPage
+          suppliers={filteredSuppliers}
+          search={search}
+          setSearch={setSearch}
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          maxMoq={maxMoq}
+          setMaxMoq={setMaxMoq}
+          readiness={readiness}
+          setReadiness={setReadiness}
+          customOnly={customOnly}
+          setCustomOnly={setCustomOnly}
+          resetFilters={resetSupplierFilters}
+          compareIds={compareIds}
+          toggleCompare={toggleCompare}
+          showChecker={showChecker}
+          setShowChecker={setShowChecker}
+          completedTasks={completedTasks}
+          toggleTask={toggleTask}
+          readinessScore={readinessScore}
+          setSelectedBrand={setSelectedBrand}
+        />
+      )}
+
+      {selectedBrand && (
+        <BrandModal
+          brand={selectedBrand}
+          saved={saved.includes(selectedBrand.id)}
+          toggleSaved={() => toggleSaved(selectedBrand.id)}
+          onClose={() => setSelectedBrand(null)}
+        />
+      )}
+
       <footer className="footer">
         <div>
-          <button className="logo footer-logo" onClick={() => navigate("Home")}>
-            KHOJ<span>.</span>
-            <small>GLOBAL</small>
-          </button>
-
+          <h2>KHOJ.GLOBAL</h2>
           <p>Discover India. Connect with the world.</p>
         </div>
-
-        <div className="footer-right">
-          <span>MADE WITH ♥ IN INDIA</span>
-          <span>© 2026 KHOJ GLOBAL · DEMO PROJECT</span>
-        </div>
+        <p>MADE WITH ♥ IN INDIA</p>
+        <small>© 2026 KHOJ GLOBAL · DEMO PROJECT</small>
       </footer>
-
-      {/* Brand Profile Modal */}
-      {selectedBrand && (
-        <div
-          className="modal-overlay"
-          onClick={() => setSelectedBrand(null)}
-        >
-          <div
-            className="brand-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="close-modal"
-              onClick={() => setSelectedBrand(null)}
-            >
-              ×
-            </button>
-
-            <img
-              className="modal-image"
-              src={selectedBrand.image}
-              alt={selectedBrand.name}
-            />
-
-            <div className="modal-content">
-              <p className="eyebrow">
-                {selectedBrand.city}, {selectedBrand.state}
-              </p>
-
-              <h2>{selectedBrand.name}</h2>
-
-              <p className="modal-tagline">
-                {selectedBrand.tagline}
-              </p>
-
-              <h3>The story behind the brand</h3>
-              <p>{selectedBrand.story}</p>
-
-              <h3 className="modal-section-title">Founder</h3>
-              <p>{selectedBrand.founder}</p>
-
-              <h3 className="modal-section-title">
-                Products & Collections
-              </h3>
-
-              <div className="product-gallery">
-                {selectedBrand.products.map((product, index) => (
-                  <div className="product-item" key={index}>
-                    <img src={product.image} alt={product.name} />
-                    <h4>{product.name}</h4>
-                    <p>{product.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="price-line">
-                <span>Starting price</span>
-                <strong>{formatPrice(selectedBrand.price)}</strong>
-              </div>
-
-              <p className="small-note">
-                Approximate currency conversion for demonstration.
-                Confirm final prices, shipping and customs charges with the brand.
-              </p>
-
-              <h3 className="modal-section-title">
-                International Information
-              </h3>
-
-              <div className="international-info">
-                <div>
-                  <strong>Shipping countries</strong>
-                  <p>{selectedBrand.shippingCountries.join(", ")}</p>
-                </div>
-
-                <div>
-                  <strong>Languages supported</strong>
-                  <p>{selectedBrand.languages.join(", ")}</p>
-                </div>
-
-                <div>
-                  <strong>Export information</strong>
-                  <p>{selectedBrand.exportInfo}</p>
-                </div>
-              </div>
-
-              <a
-                className="primary-btn contact-link"
-                href={`mailto:${selectedBrand.email}?subject=${encodeURIComponent(
-                  `Enquiry about ${selectedBrand.name}`
-                )}`}
-              >
-                Contact brand owner ↗
-              </a>
-
-              <p className="small-note">
-                Demo contact email. Replace it with the real owner's email
-                before publishing.
-              </p>
-
-              <button
-                className="share-btn"
-                onClick={() => shareBrand(selectedBrand)}
-              >
-                ↗ Share this brand profile
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
+function HomePage({ navigate, brands }) {
+  return (
+    <>
+      <section className="hero">
+        <div className="hero-content">
+          <p className="eyebrow">INDIA, DISCOVERED DIFFERENTLY</p>
+          <h1>
+            Discover the
+            <br />
+            <em>extraordinary</em> in India.
+          </h1>
+          <p className="hero-description">
+            A gateway to India's independent brands, remarkable
+            craftsmanship and stories waiting to be discovered around the
+            world.
+          </p>
 
-function BrandGrid({
+          <div className="hero-actions">
+            <button
+              className="btn-primary"
+              onClick={() => navigate("Discover")}
+            >
+              Explore Indian Brands ↗
+            </button>
+
+            <button
+              className="btn-secondary"
+              onClick={() => navigate("Supplier Match")}
+            >
+              Find a Manufacturing Partner
+            </button>
+          </div>
+        </div>
+
+        <div className="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200"
+            alt="Indian handcrafted interior"
+          />
+          <div className="hero-image-label">
+            <span>THE ART OF INDIA</span>
+            <p>Stories behind every creation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="intro-strip">
+        <div>
+          <span>01</span>
+          <p>Independent Indian brands</p>
+        </div>
+        <div>
+          <span>02</span>
+          <p>Regional craftsmanship</p>
+        </div>
+        <div>
+          <span>03</span>
+          <p>Global opportunities</p>
+        </div>
+      </section>
+
+      <section className="section home-featured">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">A WORLD OF DISCOVERY</p>
+            <h2>Made in India. <em>Made to be known.</em></h2>
+          </div>
+
+          <button
+            className="text-link"
+            onClick={() => navigate("Discover")}
+          >
+            View all brands ↗
+          </button>
+        </div>
+
+        <div className="brand-grid">
+          {brands.slice(0, 3).map((brand) => (
+            <BrandCard
+              key={brand.id}
+              brand={brand}
+              onOpen={() => navigate("Discover")}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="supplier-banner">
+        <div>
+          <p className="eyebrow">BEYOND DISCOVERY</p>
+          <h2>Looking for the right manufacturing partner?</h2>
+          <p>
+            Explore supplier profiles, compare production capabilities and
+            identify partners that may fit your business requirements.
+          </p>
+          <button
+            className="btn-light"
+            onClick={() => navigate("Supplier Match")}
+          >
+            Explore Supplier Match ↗
+          </button>
+        </div>
+        <div className="banner-decoration">K</div>
+      </section>
+    </>
+  );
+}
+
+function DiscoverPage({
   brands,
-  formatPrice,
+  search,
+  setSearch,
+  selectedState,
+  setSelectedState,
+  selectedCategory,
+  setSelectedCategory,
   saved,
   toggleSaved,
   setSelectedBrand,
+  savedPage = false,
 }) {
   return (
-    <div className="brand-grid">
-      {brands.map((brand) => (
-        <article className="brand-card" key={brand.id}>
-          <div className="brand-image-wrap">
-            <img src={brand.image} alt={brand.name} />
+    <section className="page-section">
+      <div className="page-heading">
+        <p className="eyebrow">
+          {savedPage ? "YOUR COLLECTION" : "THE DISCOVERY DIRECTORY"}
+        </p>
 
-            <button
-              className={`save-btn ${
-                saved.includes(brand.id) ? "is-saved" : ""
-              }`}
-              onClick={() => toggleSaved(brand.id)}
-              aria-label="Save brand"
-              aria-pressed={saved.includes(brand.id)}
-            >
-              {saved.includes(brand.id) ? "♥" : "♡"}
-            </button>
+        <h1>
+          {savedPage ? (
+            <>Your <em>saved brands.</em></>
+          ) : (
+            <>Discover <em>Indian brands.</em></>
+          )}
+        </h1>
 
-            <span className="category-tag">{brand.category}</span>
-          </div>
+        <p>
+          {savedPage
+            ? "Keep the brands that caught your attention close."
+            : "Explore independent labels, regional makers and products shaped by Indian creativity."}
+        </p>
+      </div>
 
-          <div className="brand-card-content">
-            <p className="brand-location">
-              {brand.city}, {brand.state}
-            </p>
+      <div className="filter-bar">
+        <input
+          type="text"
+          placeholder="Search brands, products or keywords..."
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
 
-            <h3>{brand.name}</h3>
-            <p className="brand-tagline">{brand.tagline}</p>
+        <select
+          value={selectedCategory}
+          onChange={(event) => setSelectedCategory(event.target.value)}
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
 
-            <div className="card-bottom">
-              <span>
-                From <strong>{formatPrice(brand.price)}</strong>
-              </span>
+        <select
+          value={selectedState}
+          onChange={(event) => setSelectedState(event.target.value)}
+        >
+          {states.map((state) => (
+            <option key={state} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
+      </div>
 
-              <button onClick={() => setSelectedBrand(brand)}>
-                Explore ↗
-              </button>
+      <div className="results-line">
+        <p>
+          {brands.length} {brands.length === 1 ? "brand" : "brands"} found
+        </p>
+      </div>
+
+      {brands.length > 0 ? (
+        <div className="brand-grid">
+          {brands.map((brand) => (
+            <BrandCard
+              key={brand.id}
+              brand={brand}
+              saved={saved.includes(brand.id)}
+              toggleSaved={() => toggleSaved(brand.id)}
+              onOpen={() => setSelectedBrand(brand)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">
+          <h2>No brands found</h2>
+          <p>
+            Try changing your search or selecting a different category or
+            state.
+          </p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function BrandCard({
+  brand,
+  saved = false,
+  toggleSaved,
+  onOpen,
+}) {
+  return (
+    <article className="brand-card">
+      <div className="brand-image-wrap">
+        <img src={brand.image} alt={brand.name} />
+
+        {toggleSaved && (
+          <button
+            className={`save-button ${saved ? "is-saved" : ""}`}
+            onClick={toggleSaved}
+            aria-label={saved ? "Remove saved brand" : "Save brand"}
+          >
+            {saved ? "♥" : "♡"}
+          </button>
+        )}
+
+        <span className="brand-category">{brand.category}</span>
+      </div>
+
+      <div className="brand-card-content">
+        <p className="brand-location">
+          {brand.city}, {brand.state}
+        </p>
+
+        <h3>{brand.name}</h3>
+
+        <p className="brand-tagline">{brand.tagline}</p>
+
+        <button className="text-link" onClick={onOpen}>
+          Explore brand ↗
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function BrandStoriesPage({ brands, setSelectedBrand }) {
+  return (
+    <section className="page-section">
+      <div className="page-heading">
+        <p className="eyebrow">PEOPLE · PLACES · PURPOSE</p>
+        <h1>
+          Every brand has a <em>story.</em>
+        </h1>
+        <p>
+          Discover the ideas, places and craftsmanship behind independent
+          Indian brands.
+        </p>
+      </div>
+
+      <div className="story-feature">
+        <img
+          src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1200"
+          alt="Artisan working on a handmade creation"
+        />
+
+        <div className="story-feature-content">
+          <p className="eyebrow">BEHIND THE CRAFT</p>
+          <h2>More than a product. A piece of someone's story.</h2>
+          <p>
+            From thoughtful design to traditional techniques, India's
+            independent makers bring together creativity, culture and
+            craftsmanship.
+          </p>
+          <button
+            className="btn-primary"
+            onClick={() => setSelectedBrand(brands[0])}
+          >
+            Discover a brand ↗
+          </button>
+        </div>
+      </div>
+
+      <div className="section-heading story-list-heading">
+        <div>
+          <p className="eyebrow">MEET THE MAKERS</p>
+          <h2>Stories worth <em>sharing.</em></h2>
+        </div>
+      </div>
+
+      <div className="brand-grid">
+        {brands.map((brand) => (
+          <BrandCard
+            key={brand.id}
+            brand={brand}
+            onOpen={() => setSelectedBrand(brand)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+function SupplierPage({
+  suppliers,
+  search,
+  setSearch,
+  selectedState,
+  setSelectedState,
+  selectedCategory,
+  setSelectedCategory,
+  maxMoq,
+  setMaxMoq,
+  readiness,
+  setReadiness,
+  customOnly,
+  setCustomOnly,
+  resetFilters,
+  compareIds,
+  toggleCompare,
+  showChecker,
+  setShowChecker,
+  completedTasks,
+  toggleTask,
+  readinessScore,
+  setSelectedBrand,
+}) {
+  const comparedSuppliers = suppliers.filter((item) =>
+    compareIds.includes(item.id)
+  );
+
+  return (
+    <section className="page-section supplier-page">
+      <div className="page-heading">
+        <p className="eyebrow">BUILD YOUR SUPPLY NETWORK</p>
+        <h1>
+          Find the right <em>manufacturing partner.</em>
+        </h1>
+        <p>
+          Explore supplier profiles and compare production capabilities
+          before starting a business conversation.
+        </p>
+      </div>
+
+      <div className="supplier-intro">
+        <div>
+          <span className="supplier-intro-number">01</span>
+          <h3>Discover suppliers</h3>
+          <p>Explore profiles by category, location and production needs.</p>
+        </div>
+
+        <div>
+          <span className="supplier-intro-number">02</span>
+          <h3>Compare capabilities</h3>
+          <p>Shortlist up to three suppliers side by side.</p>
+        </div>
+
+        <div>
+          <span className="supplier-intro-number">03</span>
+          <h3>Prepare for export</h3>
+          <p>Use the readiness checklist to identify your next steps.</p>
+        </div>
+      </div>
+
+      <div className="supplier-tools">
+        <div>
+          <p className="eyebrow">SUPPLIER DIRECTORY</p>
+          <h2>Find your manufacturing fit.</h2>
+        </div>
+
+        <button
+          className="btn-secondary"
+          onClick={() => setShowChecker(!showChecker)}
+        >
+          {showChecker ? "Close checklist" : "Export readiness checklist ↗"}
+        </button>
+      </div>
+
+      {showChecker && (
+        <div className="readiness-panel">
+          <div className="readiness-header">
+            <div>
+              <p className="eyebrow">YOUR EXPORT PREPARATION</p>
+              <h3>Export readiness checklist</h3>
+              <p>
+                Mark the tasks you have completed. This is a self-assessment,
+                not an official certification.
+              </p>
+            </div>
+
+            <div className="readiness-score">
+              <strong>{readinessScore}%</strong>
+              <span>Completed</span>
             </div>
           </div>
-        </article>
-      ))}
+
+          <div className="progress-track">
+            <div
+              className="progress-fill"
+              style={{ width: `${readinessScore}%` }}
+            />
+          </div>
+
+          <div className="checklist">
+            {readinessTasks.map((task, index) => (
+              <label key={index} className="checklist-item">
+                <input
+                  type="checkbox"
+                  checked={completedTasks.includes(index)}
+                  onChange={() => toggleTask(index)}
+                />
+                <span>{task}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="supplier-filters">
+        <div className="filter-main">
+          <input
+            type="text"
+            placeholder="Search suppliers, products or locations..."
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+
+          <select
+            value={selectedCategory}
+            onChange={(event) => setSelectedCategory(event.target.value)}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={selectedState}
+            onChange={(event) => setSelectedState(event.target.value)}
+          >
+            {states.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="filter-secondary">
+          <label>
+            Maximum MOQ
+            <select
+              value={maxMoq}
+              onChange={(event) => setMaxMoq(event.target.value)}
+            >
+              <option value="Any">Any quantity</option>
+              <option value="100">100 units</option>
+              <option value="200">200 units</option>
+              <option value="300">300 units</option>
+              <option value="500">500 units</option>
+            </select>
+          </label>
+
+          <label>
+            Readiness
+            <select
+              value={readiness}
+              onChange={(event) => setReadiness(event.target.value)}
+            >
+              <option value="Any">Any status</option>
+              <option value="Developing">Developing</option>
+              <option value="In progress">In progress</option>
+            </select>
+          </label>
+
+          <label className="custom-filter">
+            <input
+              type="checkbox"
+              checked={customOnly}
+              onChange={(event) => setCustomOnly(event.target.checked)}
+            />
+            Customisation available
+          </label>
+
+          <button className="reset-button" onClick={resetFilters}>
+            Reset filters ↺
+          </button>
+        </div>
+      </div>
+
+      <div className="supplier-results">
+        <p>
+          <strong>{suppliers.length}</strong> supplier profiles found
+        </p>
+        <span>Select up to 3 suppliers to compare</span>
+      </div>
+
+      {suppliers.length > 0 ? (
+        <div className="supplier-grid">
+          {suppliers.map((supplier) => (
+            <SupplierCard
+              key={supplier.id}
+              supplier={supplier}
+              isCompared={compareIds.includes(supplier.id)}
+              onCompare={() => toggleCompare(supplier.id)}
+              onOpen={() => setSelectedBrand(supplier)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">
+          <h2>No matching suppliers</h2>
+          <p>Try adjusting your filters to see more results.</p>
+          <button className="btn-primary" onClick={resetFilters}>
+            Reset filters
+          </button>
+        </div>
+      )}
+
+      {compareIds.length > 0 && (
+        <div className="comparison-panel">
+          <div className="comparison-heading">
+            <div>
+              <p className="eyebrow">YOUR SHORTLIST</p>
+              <h3>Supplier comparison</h3>
+            </div>
+            <button
+              className="reset-button"
+              onClick={() => compareIds.forEach((id) => toggleCompare(id))}
+            >
+              Clear selection
+            </button>
+          </div>
+
+          <div className="comparison-table-wrap">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Supplier</th>
+                  {comparedSuppliers.map((supplier) => (
+                    <th key={supplier.id}>{supplier.name}</th>
+                  ))}
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Location</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>
+                      {supplier.city}, {supplier.state}
+                    </td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Category</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>{supplier.category}</td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Minimum order quantity</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>{supplier.moq} units</td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Monthly capacity</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>
+                      {supplier.capacity.toLocaleString("en-IN")} units
+                    </td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Lead time</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>{supplier.leadTime} days</td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Customisation</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>
+                      {supplier.customisation ? "Available" : "Not listed"}
+                    </td>
+                  ))}
+                </tr>
+
+                <tr>
+                  <td>Samples</td>
+                  {comparedSuppliers.map((supplier) => (
+                    <td key={supplier.id}>
+                      {supplier.samples ? "Available" : "Not listed"}
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      <p className="demo-disclaimer">
+        <strong>Demo data:</strong> Supplier profiles and production
+        information shown here are illustrative sample records created for
+        demonstration. They are not verified supplier listings. Always
+        independently verify business details, capacity, certifications and
+        commercial terms before entering into an agreement.
+      </p>
+    </section>
+  );
+}
+
+function SupplierCard({
+  supplier,
+  isCompared,
+  onCompare,
+  onOpen,
+}) {
+  return (
+    <article className="supplier-card">
+      <div className="supplier-card-image">
+        <img
+          src={supplier.image}
+          alt={`${supplier.name} product category`}
+        />
+        <span className="supplier-category">{supplier.category}</span>
+      </div>
+
+      <div className="supplier-card-body">
+        <div className="supplier-title-area">
+          <p className="supplier-location">
+            {supplier.city}, {supplier.state}
+          </p>
+          <h3>{supplier.name}</h3>
+          <p className="supplier-tagline">{supplier.tagline}</p>
+        </div>
+
+        <div className="supplier-metrics">
+          <div>
+            <span>MINIMUM ORDER</span>
+            <strong>{supplier.moq} units</strong>
+          </div>
+          <div>
+            <span>MONTHLY CAPACITY</span>
+            <strong>
+              {supplier.capacity.toLocaleString("en-IN")} units
+            </strong>
+          </div>
+          <div>
+            <span>LEAD TIME</span>
+            <strong>{supplier.leadTime} days</strong>
+          </div>
+        </div>
+
+        <div className="supplier-tags">
+          <span>{supplier.readiness}</span>
+          {supplier.customisation && <span>Customisation</span>}
+          {supplier.samples && <span>Samples available</span>}
+        </div>
+
+        <div className="supplier-card-actions">
+          <button
+            className="supplier-profile-button"
+            onClick={onOpen}
+          >
+            View profile ↗
+          </button>
+
+          <button
+            className={`compare-button ${isCompared ? "selected" : ""}`}
+            onClick={onCompare}
+          >
+            {isCompared ? "✓ Added" : "+ Compare"}
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function BrandModal({ brand, saved, toggleSaved, onClose }) {
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="brand-modal"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          className="modal-close"
+          onClick={onClose}
+          aria-label="Close profile"
+        >
+          ×
+        </button>
+
+        <div className="modal-image">
+          <img src={brand.image} alt={brand.name} />
+        </div>
+
+        <div className="modal-content">
+          <p className="eyebrow">
+            {brand.category} · {brand.city}, {brand.state}
+          </p>
+
+          <h2>{brand.name}</h2>
+          <p className="modal-tagline">{brand.tagline}</p>
+
+          <div className="modal-divider" />
+
+          <h3>What they make</h3>
+          <div className="product-list">
+            {brand.products.map((product) => (
+              <span key={product}>{product}</span>
+            ))}
+          </div>
+
+          <h3>Production information</h3>
+
+          <div className="modal-details">
+            <div>
+              <span>Minimum order quantity</span>
+              <strong>{brand.moq} units</strong>
+            </div>
+
+            <div>
+              <span>Monthly production capacity</span>
+              <strong>
+                {brand.capacity.toLocaleString("en-IN")} units
+              </strong>
+            </div>
+
+            <div>
+              <span>Estimated lead time</span>
+              <strong>{brand.leadTime} days</strong>
+            </div>
+
+            <div>
+              <span>Customisation</span>
+              <strong>
+                {brand.customisation ? "Available" : "Not listed"}
+              </strong>
+            </div>
+
+            <div>
+              <span>Product samples</span>
+              <strong>
+                {brand.samples ? "Available" : "Not listed"}
+              </strong>
+            </div>
+
+            <div>
+              <span>Readiness status</span>
+              <strong>{brand.readiness}</strong>
+            </div>
+          </div>
+
+          <button className="btn-primary modal-save" onClick={toggleSaved}>
+            {saved ? "♥ Saved to your collection" : "♡ Save this brand"}
+          </button>
+
+          <p className="modal-disclaimer">
+            Illustrative demo profile. Details have not been independently
+            verified.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
