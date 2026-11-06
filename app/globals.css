@@ -1404,3 +1404,107 @@ em {
     margin-top: 10px;
   }
 }
+
+/* =====================================
+   KHOJ GLOBAL - ORIGIN PASSPORT
+===================================== */
+
+.origin-passport {
+  margin-top: 28px;
+  padding: 24px;
+  background: #f8f7f2;
+  border: 1px solid #e6e1d5;
+  border-radius: 16px;
+  color: #25291f;
+}
+
+.origin-passport-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.origin-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9eee2;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.origin-passport-header .eyebrow {
+  margin: 0 0 5px;
+  color: #788365;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.origin-passport-header h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.origin-description {
+  color: #73776d;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.origin-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.origin-details > div {
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #ecebe5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.origin-details span {
+  color: #85877f;
+  font-size: 11px;
+}
+
+.origin-details strong {
+  color: #30362b;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.origin-note {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  background: #f1eddf;
+  border-radius: 8px;
+  color: #79683d;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .origin-passport {
+    padding: 17px;
+  }
+
+  .origin-details {
+    grid-template-columns: 1fr;
+  }
+
+  .origin-passport-header h3 {
+    font-size: 19px;
+  }
+}
