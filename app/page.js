@@ -19,6 +19,16 @@ const brands = [
     readiness: "Developing",
     customisation: true,
     samples: true,
+    
+originPassport: {
+  manufacturingLocation: "Jaipur, Rajasthan",
+  craftTradition: "Not specified",
+  primaryMaterials: "Not specified",
+  productionMethod: "Not specified",
+  originStatus: "Pending verification",
+  documentation: "Not provided",
+},
+
   },
   {
     id: 2,
@@ -1176,6 +1186,60 @@ function BrandModal({ brand, saved, toggleSaved, onClose }) {
               <strong>{brand.readiness}</strong>
             </div>
           </div>
+          
+{brand.originPassport && (
+  <section className="origin-passport">
+    <div className="origin-passport-header">
+      <span className="origin-icon">🌍</span>
+      <div>
+        <p className="eyebrow">PRODUCT TRANSPARENCY</p>
+        <h3>Origin Passport</h3>
+      </div>
+    </div>
+
+    <p className="origin-description">
+      Discover the manufacturing background and origin
+      information of this brand.
+    </p>
+
+    <div className="origin-details">
+      <div>
+        <span>Manufacturing location</span>
+        <strong>{brand.originPassport.manufacturingLocation}</strong>
+      </div>
+
+      <div>
+        <span>Craft tradition</span>
+        <strong>{brand.originPassport.craftTradition}</strong>
+      </div>
+
+      <div>
+        <span>Primary materials</span>
+        <strong>{brand.originPassport.primaryMaterials}</strong>
+      </div>
+
+      <div>
+        <span>Production method</span>
+        <strong>{brand.originPassport.productionMethod}</strong>
+      </div>
+
+      <div>
+        <span>Origin status</span>
+        <strong>{brand.originPassport.originStatus}</strong>
+      </div>
+
+      <div>
+        <span>Documentation</span>
+        <strong>{brand.originPassport.documentation}</strong>
+      </div>
+    </div>
+
+    <p className="origin-note">
+      Origin information: {brand.originPassport.originStatus}.
+    </p>
+  </section>
+)}
+
 
           <button className="btn-primary modal-save" onClick={toggleSaved}>
             {saved ? "♥ Saved to your collection" : "♡ Save this brand"}
